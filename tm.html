@@ -20,6 +20,8 @@
 
     // the link to your model provided by Teachable Machine export panel
     const URL = "https://teachablemachine.withgoogle.com/models/m-fBG1Yp_/";
+  
+    const checks = 0;
 
     let model, webcam, labelContainer, maxPredictions;
 
@@ -54,6 +56,10 @@
         webcam.update(); // update the webcam frame
         await predict();
         window.requestAnimationFrame(loop);
+        checks++;
+        if (checks == 50) {
+          break;
+        }
     }
 
     // run the webcam image through the image model

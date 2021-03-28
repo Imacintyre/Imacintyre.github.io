@@ -20,9 +20,6 @@
 
     // the link to your model provided by Teachable Machine export panel
     const URL = "https://teachablemachine.withgoogle.com/models/m-fBG1Yp_/";
-  
-    var count = 0;
-    var predi;
 
     let model, webcam, labelContainer, maxPredictions;
 
@@ -67,8 +64,6 @@
             const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction;
-            count++;
-            predi = prediction[i].probability.toFixed(2);
         }
     }
 </script>
@@ -76,11 +71,7 @@
   <script type="text/javascript">
     // when the button is clicked, send a message to the app
     document.getElementById('messageButton').onclick = function() {
-      if (count < 50){
       ThunkableWebviewerExtension.postMessage('hello world');
-      }
-      else {
-        ThunkableWebviewerExtension.postMessage(predi);
     }
 
     // when we get a message from the app, display it on the page
